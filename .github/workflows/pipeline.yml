@@ -64,10 +64,6 @@ jobs:
     - name: 'Run GitVersion'
       id: gitversion
       uses: gittools/actions/gitversion/execute@v3.0.0
-      with:
-        useConfigFile: true
-      env:
-        GITVERSION_FALLBACK_TAG: "latest"
 
     - name: Display GitVersion Output
       run: |
