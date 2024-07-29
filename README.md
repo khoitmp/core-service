@@ -1,3 +1,8 @@
+## Compose
+```sh
+docker compose -f docker-compose.yml -f development.yml up -d
+```
+
 ## Run Unit Tests
 ```sh
 dotnet test --filter "Tests.Units" \
