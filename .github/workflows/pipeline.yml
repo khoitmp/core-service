@@ -58,15 +58,20 @@ jobs:
 
     - name: Run GitVersion
       id: gitversion
-      uses: gittools/actions/gitversion/setup@v3.0.0
+      uses: gittools/actions/gitversion@v3.0.0
       with:
         useConfigFile: true
+      env:
+        GITVERSION_FALLBACK_TAG: "latest"
 
     - name: Display GitVersion Output
       run: |
-        echo "GitVersion output:"
-        echo "${{ steps.gitversion.outputs }}"
+        echo "GitVersion Output:"
+        echo "FullSemVer: ${{ steps.gitversion.outputs.fullsemver }}"
         echo "SemVer: ${{ steps.gitversion.outputs.semver }}"
+        echo "Major: ${{ steps.gitversion.outputs.major }}"
+        echo "Minor: ${{ steps.gitversion.outputs.minor }}"
+        echo "Patch: ${{ steps.gitversion.outputs.patch }}"
 
     # - name: Build Docker Image
     #   run: docker build -t ${{ github.repository }}:latest .
