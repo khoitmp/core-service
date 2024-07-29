@@ -15,7 +15,6 @@ public class DeviceTests
 
         Console.WriteLine(value);
 
-        Assert.Equal(150, value);
-        // Assert.Equal(200, value);
+        Assert.Equal(200, value);
     }
 }

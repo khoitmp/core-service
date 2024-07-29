@@ -1,4 +1,4 @@
-name: CI core-service
+name: service
 
 on:
   push:
@@ -12,7 +12,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -34,21 +34,21 @@ jobs:
           --results-directory ./tests/reports/ \
           --logger "trx;LogFileName=unit-tests.trx"
           
-    # - name: Run Integration Tests
-    #   run: |
-    #     dotnet test --filter "Tests.Integrations" \
-    #       /p:CollectCoverage=true \
-    #       /p:CoverletOutputFormat=cobertura \
-    #       /p:CoverletOutput=./reports/code-coverage.xml      
+    - name: Run Integration Tests
+      run: |
+        dotnet test --filter "Tests.Integrations" \
+          /p:CollectCoverage=true \
+          /p:CoverletOutputFormat=cobertura \
+          /p:CoverletOutput=./reports/code-coverage.xml
 
-    # - name: Upload Unit Tests
-    #   uses: actions/upload-artifact@v3
-    #   with:
-    #     name: unit-test-results
-    #     path: ./tests/reports/unit-tests.trx
+    - name: Upload Unit Tests
+      uses: actions/upload-artifact@v3
+      with:
+        name: unit-test-results
+        path: ./tests/reports/unit-tests.trx
 
-    # - name: Upload Code Coverage
-    #   uses: actions/upload-artifact@v3
-    #   with:
-    #     name: code-coverage-results
-    #     path: ./tests/reports/code-coverage.xml
+    - name: Upload Code Coverage
+      uses: actions/upload-artifact@v3
+      with:
+        name: code-coverage-results
+        path: ./tests/reports/code-coverage.xml
