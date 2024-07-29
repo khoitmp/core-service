@@ -1,0 +1,19 @@
+services:
+  core-service:
+    image: khoitmp/core-service:latest
+    container_name: core-service
+    restart: on-failure
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
+      Logging__LogLevel__Default: ${LOGGING_LOGLEVEL_DEFAULT}
+      Logging__LogLevel__Microsoft: ${LOGGING_LOGLEVEL_MICROSOFT}
+      Logging__LogLevel__System: ${LOGGING_LOGLEVEL_SYSTEM}
+      Logging__LogLevel__Microsoft.Hosting.Lifetime: ${LOGGING_LOGLEVEL_MICROSOFT_HOSTING_LIFETIME}
+      Logging__LogLevel__Microsoft.EntityFrameworkCore: ${LOGGING_LOGLEVEL_MICROSOFT_ENTITYFRAMEWORKCORE}
+    ports:
+      - "11000:80"
+    networks:
+      - core
+
+networks:
+  core:
