@@ -57,18 +57,12 @@ jobs:
         password: ${{ secrets.DOCKER_TOKEN }}
 
     - name: Install GitVersion
-      uses: nmcc/actions-gitversion@v1
-      with:
-        path-to-gitversion: packages/GitVersion.CommandLine/tools/GitVersion.exe
-
-    - name: Display GitVersion Output
+      id: gitversion
+      uses: codacy/git-version@2.7.1
+    
+    - name: Use the version
       run: |
-        echo "GitVersion Output:"
-        echo "FullSemVer: ${{ steps.gitversion.outputs.fullsemver }}"
-        echo "SemVer: ${{ steps.gitversion.outputs.semver }}"
-        echo "Major: ${{ steps.gitversion.outputs.major }}"
-        echo "Minor: ${{ steps.gitversion.outputs.minor }}"
-        echo "Patch: ${{ steps.gitversion.outputs.patch }}"
+        echo ${{ steps.gitversion.outputs.version }}
 
     # - name: Build Docker Image
     #   run: docker build -t ${{ github.repository }}:latest .
