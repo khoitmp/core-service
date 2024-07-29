@@ -60,16 +60,22 @@ jobs:
       id: gitversion
       uses: gittools/actions/gitversion/setup@v3.0.0
       with:
-        configFile: ./GitVersion.yml
+        useConfigFile: true
 
-    - name: Build Docker Image
-      run: docker build -t ${{ github.repository }}:latest .
+    - name: Display GitVersion Output
+      run: |
+        echo "GitVersion output:"
+        echo "${{ steps.gitversion.outputs }}"
+        echo "SemVer: ${{ steps.gitversion.outputs.semver }}"
 
-    - name: Tag Docker Image
+    # - name: Build Docker Image
+    #   run: docker build -t ${{ github.repository }}:latest .
+
+    # - name: Tag Docker Image
       # run: |
       #   docker tag ${{ github.repository }}:latest ${{ github.repository }}:${{ steps.gitversion.outputs.semver }}
       #   echo "Image tagged as ${{ github.repository }}:${{ steps.gitversion.outputs.semver }}"
-      run: echo "Image tagged as ${{ github.repository }}:${{ steps.gitversion.outputs.semver }}"
+      # run: echo "Image tagged as ${{ github.repository }}:${{ steps.gitversion.outputs.semver }}"
 
     # - name: Push Docker Image
     #   run: docker push ${{ github.repository }}:${{ env.VERSION }}
