@@ -1,5 +1,3 @@
-using Core.Api.Services;
-
 namespace Core.Api.Controller;
 
 [Route("dev/[controller]")]
