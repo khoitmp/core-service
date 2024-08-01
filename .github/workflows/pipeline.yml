@@ -1,4 +1,4 @@
-name: service (build)
+name: service (CI/CD)
 
 on:
   push:
@@ -87,7 +87,6 @@ jobs:
 
       - name: Deploy with Helm
         run: |
-          echo
           helm upgrade --install service ./helm-chart \
-            --set image.repository=khoitmp/service \
-            --set image.tag=${{ needs.build.outputs.image-tag }}
+            --set deployment.image.repository=khoitmp/service \
+            --set deployment.image.tag=${{ needs.build.outputs.image-tag }}
