@@ -1,0 +1,7 @@
+deployment:
+  name: service
+  scale: 3
+  image:
+    name: service
+    tag: latest
+    repository: khoitmp

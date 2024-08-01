@@ -1,0 +1,24 @@
+name: service (deploy)
+
+on:
+  workflow_run:
+    workflows: ["service (build)"]
+    types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    environment: Default
+    
+    steps:
+      - name: Configure kubectl
+        run: echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
+
+      - name: Deploy with Helm
+        run: |
+          helm upgrade --install service ./helm-chart \
+            --set image.repository=khoitmp/service \
+            --set image.tag=latest
