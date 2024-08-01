@@ -88,5 +88,4 @@ jobs:
       - name: Deploy with Helm
         run: |
           helm upgrade --install service ./helm-chart \
-            --set deployment.image.repository=khoitmp/service \
             --set deployment.image.tag=${{ needs.build.outputs.image-tag }}
