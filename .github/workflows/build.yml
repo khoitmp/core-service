@@ -14,7 +14,10 @@ jobs:
     runs-on: self-hosted
 
     environment: Default
-    
+
+    outputs:
+      image-tag: ${{ steps.set-output.outputs.image-tag }}
+
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -68,5 +71,27 @@ jobs:
         docker tag ${{ github.repository }}:latest ${{ github.repository }}:${{ steps.gitversion.outputs.version }}
         echo "Image tagged as ${{ github.repository }}:${{ steps.gitversion.outputs.version }}"
 
+    - name: Set output
+      id: set-output
+      run: echo "::set-output name=image-tag::${{ steps.gitversion.outputs.version }}"
+
     - name: Push Docker Image
       run: docker push ${{ github.repository }}:${{ steps.gitversion.outputs.version }}
+
+  deploy:
+    runs-on: self-hosted
+    
+    environment: Default
+  
+    needs: build
+  
+    steps:
+      - name: Configure kubectl
+        run: echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
+
+      - name: Deploy with Helm
+        run: |
+          echo
+          helm upgrade --install service ./helm-chart \
+            --set image.repository=khoitmp/service \
+            --set image.tag=${{ needs.build.outputs.image-tag }}
