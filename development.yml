@@ -1,5 +1,0 @@
-services:
-  core-service:
-    build: 
-      context: .
-      dockerfile: Dockerfile
