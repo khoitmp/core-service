@@ -1,6 +1,6 @@
 ## Compose
 ```sh
-docker compose -f docker-compose.yml -f development.yml up -d
+docker compose -f docker-compose.yaml -f development.yaml up -d
 ```
 
 ## Run Unit Tests
