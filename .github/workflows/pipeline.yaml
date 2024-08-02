@@ -1,4 +1,4 @@
-name: service (CI/CD)
+name: core-service (CI/CD)
 
 on:
   push:
@@ -87,5 +87,5 @@ jobs:
 
       - name: Deploy with Helm
         run: |
-          helm upgrade --install service ./helm-chart \
+          helm upgrade --install core-service ./helm-chart/core-service \
             --set deployment.image.tag=${{ needs.build.outputs.image-tag }}

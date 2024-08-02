@@ -1,0 +1,17 @@
+name: Ingress Controller (CI)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+    - name: Configure kubectl
+      run: echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
+
+    - name: Deploy with Helm
+      run: |
+        helm upgrade --install ingress-nginx helm-chart/ingress-nginx \
+        --namespace ingress-nginx --create-namespace
