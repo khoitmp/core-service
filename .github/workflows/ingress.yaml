@@ -1,4 +1,4 @@
-name: Ingress Controller (CD)
+name: ingress-controller (CD)
 
 on:
   workflow_dispatch:
@@ -6,6 +6,8 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
+
+    environment: Default
 
     steps:
     - name: Configure kubectl
