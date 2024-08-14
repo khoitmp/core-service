@@ -16,4 +16,4 @@ jobs:
     - name: Deploy with Helm
       run: |
         helm upgrade --install ingress-nginx helm-chart/ingress-controller \
-        --namespace ingress-nginx
+        --namespace ingress-nginx --create-namespace
