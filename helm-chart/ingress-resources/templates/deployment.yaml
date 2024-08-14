@@ -4,11 +4,9 @@ kind: Ingress
 metadata:
   name: nginx-gateway
   namespace: default
-  annotations:
-    nginx.ingress.kubernetes.io/allow-http-methods: "GET,POST"
 spec:
   rules:
-  - host: core.khoitmp.duckdns.org
+  - host: "*"
     http:
       paths:
       - path: /dev
