@@ -17,10 +17,10 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                  - key: type
+                  - key: os
                     operator: In
                     values:
-                      - linux  
+                      - linux                 
       containers:
         - name: {{ .Release.Name }}
           image: {{ .Values.deployment.image.repository }}/{{ .Values.deployment.image.name }}:{{ .Values.deployment.image.tag }}
