@@ -1,8 +1,11 @@
+# Check: kubectl get services -n ingress-nginx (it has External IP)
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nginx-gateway
   namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/allow-http-methods: "GET,POST"
 spec:
   rules:
   - host: core.khoitmp.duckdns.org

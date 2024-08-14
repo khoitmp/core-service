@@ -1,4 +1,5 @@
-# curl -O https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+# Download: curl -O https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+# Check: kubectl get pods -n ingress-nginx
 apiVersion: v1
 kind: Namespace
 metadata:
