@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: my-app.example.com
+  - host: core.khoitmp.duckdns.org
     http:
       paths:
       - path: /
