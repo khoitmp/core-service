@@ -16,6 +16,7 @@ spec:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
+              # Make sure pods will be deployed to nodes running linux
               - matchExpressions:
                   - key: os
                     operator: In

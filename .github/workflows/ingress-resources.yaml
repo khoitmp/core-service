@@ -1,4 +1,4 @@
-name: ingress-controller (CD)
+name: ingress-resources (CD)
 
 on:
   workflow_dispatch:
@@ -15,5 +15,5 @@ jobs:
 
     - name: Deploy with Helm
       run: |
-        helm upgrade --install ingress-nginx helm-chart/ingress \
+        helm upgrade --install ingress-nginx helm-chart/ingress-resources \
         --namespace ingress-nginx
