@@ -18,16 +18,4 @@ jobs:
 
     - name: Deploy with Helm
       run: |
-        kubectl apply -f helm-chart/ingress-controller/templates/namespace.yaml
-        
-        until kubectl get namespace ingress-nginx > /dev/null 2>&1; do
-          echo "Waiting for namespace ingress-nginx to be available..."
-          sleep 10
-        done
-
-        kubectl label namespace ingress-nginx app.kubernetes.io/managed-by=Helm --overwrite
-        kubectl annotate namespace ingress-nginx meta.helm.sh/release-name=ingress-nginx --overwrite
-        kubectl annotate namespace ingress-nginx meta.helm.sh/release-namespace=ingress-nginx --overwrite
-
-        helm upgrade --install ingress-nginx helm-chart/ingress-controller \
-        --namespace ingress-nginx
+        helm upgrade --install ingress-nginx helm-chart/ingress-controller
