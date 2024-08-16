@@ -18,7 +18,7 @@ jobs:
 
     - name: Deploy with Helm
       run: |
-        kubectl create namespace ingress-nginx
+        kubectl apply -f helm-chart/ingress-controller/templates/namespace.yaml
         
         until kubectl get namespace ingress-nginx > /dev/null 2>&1; do
           echo "Waiting for namespace ingress-nginx to be available..."
