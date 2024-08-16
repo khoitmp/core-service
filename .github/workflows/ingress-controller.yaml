@@ -19,6 +19,6 @@ jobs:
     - name: Deploy with Helm
       run: |
         kubectl create namespace ingress-nginx
-        kubectl get namespace ingress-nginx --no-headers
+        kubectl wait --for=condition=Established namespace/ingress-nginx --timeout=60s
         helm upgrade --install ingress-nginx helm-chart/ingress-controller \
         --namespace ingress-nginx
