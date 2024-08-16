@@ -2,6 +2,6 @@ deployment:
   name: device-service
   scale: 3
   image:
-    name: device-service
+    name: microservices-device-service
     tag: latest
     repository: khoitmp

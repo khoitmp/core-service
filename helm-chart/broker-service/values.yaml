@@ -2,6 +2,6 @@ deployment:
   name: broker-service
   scale: 3
   image:
-    name: broker-service
+    name: microservices-broker-service
     tag: latest
     repository: khoitmp
