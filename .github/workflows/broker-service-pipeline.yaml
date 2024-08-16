@@ -39,15 +39,15 @@ jobs:
       uses: codacy/git-version@2.7.1
 
     - name: Build Docker Image
-      run: docker build -f Dockerfile-broker-service -t ${{ github.repository }}-broker-service:latest .
+      run: docker build -f Dockerfile-broker-service -t ${{ github.repository }}_broker-service:latest .
 
     - name: Tag Docker Image
       run: |
-        docker tag ${{ github.repository }}-broker-service:latest ${{ github.repository }}-broker-service:${{ steps.gitversion.outputs.version }}
-        echo "Image tagged as ${{ github.repository }}:${{ steps.gitversion.outputs.version }}"
+        docker tag ${{ github.repository }}_broker-service:latest ${{ github.repository }}_broker-service:${{ steps.gitversion.outputs.version }}
+        echo "Image tagged as ${{ github.repository }}_${{ steps.gitversion.outputs.version }}"
 
     - name: Push Docker Image
-      run: docker push ${{ github.repository }}-broker-service:${{ steps.gitversion.outputs.version }}
+      run: docker push ${{ github.repository }}_broker-service:${{ steps.gitversion.outputs.version }}
 
   deploy:
     runs-on: self-hosted

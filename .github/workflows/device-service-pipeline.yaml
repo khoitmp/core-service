@@ -64,15 +64,15 @@ jobs:
       uses: codacy/git-version@2.7.1
 
     - name: Build Docker Image
-      run: docker build -f Dockerfile-device-service -t ${{ github.repository }}-device-service:latest .
+      run: docker build -f Dockerfile-device-service -t ${{ github.repository }}_device-service:latest .
 
     - name: Tag Docker Image
       run: |
-        docker tag ${{ github.repository }}-device-service:latest ${{ github.repository }}-device-service:${{ steps.gitversion.outputs.version }}
-        echo "Image tagged as ${{ github.repository }}-device-service:${{ steps.gitversion.outputs.version }}"
+        docker tag ${{ github.repository }}_device-service:latest ${{ github.repository }}_device-service:${{ steps.gitversion.outputs.version }}
+        echo "Image tagged as ${{ github.repository }}_device-service:${{ steps.gitversion.outputs.version }}"
 
     - name: Push Docker Image
-      run: docker push ${{ github.repository }}-device-service:${{ steps.gitversion.outputs.version }}
+      run: docker push ${{ github.repository }}_device-service:${{ steps.gitversion.outputs.version }}
 
   deploy:
     runs-on: self-hosted
