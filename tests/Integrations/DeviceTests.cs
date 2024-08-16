@@ -24,7 +24,7 @@ public class DeviceTests : IClassFixture<WebApplicationFactory<Startup>>
     {
         var httpClient = _factory.CreateClient();
         var content = await httpClient.GetStringAsync($"http://localhost/dev/devices");
-        var response = JsonConvert.DeserializeObject<List<Device>>(content);
+        var response = JsonConvert.DeserializeObject<List<DeviceModel>>(content);
 
         Assert.Equal(3, response.Count);
         Assert.Equal(10, response[0].Value);

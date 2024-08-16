@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: backend-gateway
   namespace: default
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
   - host: "devtmp.duckdns.org"
@@ -13,5 +15,12 @@ spec:
         backend:
           service:
             name: core-service
+            port:
+              number: 80
+      - path: /bro
+        pathType: Prefix
+        backend:
+          service:
+            name: broker-service
             port:
               number: 80

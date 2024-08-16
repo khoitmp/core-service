@@ -1,0 +1,7 @@
+deployment:
+  name: broker-service
+  scale: 3
+  image:
+    name: broker-service
+    tag: latest
+    repository: khoitmp

@@ -1,5 +1,9 @@
 services:
-  core-service:
+  device-service:
     build: 
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-device-service
+  broker-service:
+    build: 
+      context: .
+      dockerfile: Dockerfile-broker-service

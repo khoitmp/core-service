@@ -12,7 +12,7 @@ dotnet test --filter "Tests.Units" \
 
 ## Run Integration Tests
 ```sh
-dotnet test --filter "Tests.Integrations" \
+dotnet test --project=Device.Api --filter "Tests.Integrations" \
   /p:CollectCoverage=true \
   /p:CoverletOutputFormat=cobertura \
   /p:CoverletOutput=./reports/code-coverage.xml

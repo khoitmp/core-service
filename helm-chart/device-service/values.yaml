@@ -1,7 +1,7 @@
 deployment:
-  name: core-service
+  name: device-service
   scale: 3
   image:
-    name: core-service
+    name: device-service
     tag: latest
     repository: khoitmp

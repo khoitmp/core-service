@@ -1,4 +1,4 @@
-namespace Core.Api.Services;
+namespace Device.Api.Services;
 
 public class DeviceService
 {
@@ -11,13 +11,13 @@ public class DeviceService
         _value = Convert.ToInt32(_configuration["Value"] ?? "0");
     }
 
-    public Task<List<Device>> GetDevicesAsync()
+    public Task<List<DeviceModel>> GetDevicesAsync()
     {
-        var devices = new List<Device>()
+        var devices = new List<DeviceModel>()
         {
-            new Device("device1", "Device 1", CalculateValue(1)),
-            new Device("device2", "Device 2", CalculateValue(2)),
-            new Device("device3", "Device 3", CalculateValue(3))
+            new DeviceModel("device1", "Device 1", CalculateValue(1)),
+            new DeviceModel("device2", "Device 2", CalculateValue(2)),
+            new DeviceModel("device3", "Device 3", CalculateValue(3))
         };
         return Task.FromResult(devices);
     }

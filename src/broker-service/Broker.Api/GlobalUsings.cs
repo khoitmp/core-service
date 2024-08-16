@@ -8,5 +8,5 @@ global using Microsoft.AspNetCore.Builder;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 
-global using Core.Api.Models;
-global using Core.Api.Services;
+global using Broker.Api.Models;
+global using Broker.Api.Services;

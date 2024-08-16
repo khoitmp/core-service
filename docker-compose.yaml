@@ -1,7 +1,7 @@
 services:
-  core-service:
-    image: khoitmp/core-service:latest
-    container_name: core-service
+  device-service:
+    image: khoitmp/device-service:latest
+    container_name: device-service
     restart: on-failure
     environment:
       ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
@@ -13,7 +13,26 @@ services:
     ports:
       - "11000:80"
     networks:
-      - core
+      - microservices
+
+  broker-service:
+    image: khoitmp/broker-service:latest
+    container_name: broker-service
+    restart: on-failure
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
+      Logging__LogLevel__Default: ${LOGGING_LOGLEVEL_DEFAULT}
+      Logging__LogLevel__Microsoft: ${LOGGING_LOGLEVEL_MICROSOFT}
+      Logging__LogLevel__System: ${LOGGING_LOGLEVEL_SYSTEM}
+      Logging__LogLevel__Microsoft.Hosting.Lifetime: ${LOGGING_LOGLEVEL_MICROSOFT_HOSTING_LIFETIME}
+      Logging__LogLevel__Microsoft.EntityFrameworkCore: ${LOGGING_LOGLEVEL_MICROSOFT_ENTITYFRAMEWORKCORE}
+    ports:
+      - "12000:80"
+    networks:
+      - microservices
 
 networks:
-  core:
+  microservices:
+    name: microservices
+    driver: bridge
+    external: false
