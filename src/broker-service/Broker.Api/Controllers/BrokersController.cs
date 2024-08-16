@@ -1,6 +1,6 @@
 namespace Broker.Api.Controller;
 
-[Route("dev/[controller]")]
+[Route("bro/[controller]")]
 [ApiController]
 public class BrokersController : ControllerBase
 {
