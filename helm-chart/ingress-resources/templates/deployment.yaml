@@ -6,7 +6,7 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: "*"
+  - host: "139.59.219.225"
     http:
       paths:
       - path: /dev
