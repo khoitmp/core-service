@@ -1,0 +1,7 @@
+# This file defines a Kubernetes namespace
+# If the namespace 'ingress-nginx' doesn't exist, this will create it.
+# Otherwise, it will do nothing
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ingress-nginx

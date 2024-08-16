@@ -16,7 +16,12 @@ jobs:
     - name: Configure kubectl
       run: echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
 
+    - name: Create namespace
+      run: |
+        kubectl apply -f helm-chart/ingress-controller/templates/namespace.yaml
+        kubectl get ns ingress-nginx --wait
+
     - name: Deploy with Helm
       run: |
         helm upgrade --install ingress-nginx helm-chart/ingress-controller \
-        --namespace ingress-nginx --create-namespace
+        --namespace ingress-nginx
