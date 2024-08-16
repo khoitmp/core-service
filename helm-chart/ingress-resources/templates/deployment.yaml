@@ -1,8 +1,7 @@
-# Check: kubectl get services -n ingress-nginx (it has External IP)
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: nginx-gateway
+  name: ingress-nginx
   namespace: default
 spec:
   rules:
