@@ -162,7 +162,6 @@ rules:
   - secrets
   - namespaces
   verbs:
-  - get
   - list
   - watch
 - apiGroups:
@@ -194,10 +193,6 @@ rules:
   - get
   - list
   - watch
-  - create
-  - update
-  - patch
-  - delete
 - apiGroups:
   - ""
   resources:
@@ -219,10 +214,6 @@ rules:
   - get
   - list
   - watch
-  - create
-  - update
-  - patch
-  - delete
 - apiGroups:
   - discovery.k8s.io
   resources:
@@ -442,7 +433,6 @@ spec:
         - --validating-webhook-certificate=/usr/local/certificates/cert
         - --validating-webhook-key=/usr/local/certificates/key
         - --enable-metrics=false
-        - --watch-namespace=""
         env:
         - name: POD_NAME
           valueFrom:

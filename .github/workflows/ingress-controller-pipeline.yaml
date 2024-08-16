@@ -1,4 +1,4 @@
-name: namespace (CD)
+name: ingress-controller (CD)
 
 on:
   workflow_dispatch:
@@ -18,7 +18,7 @@ jobs:
 
     - name: Deploy with Helm
       run: |
-        kubectl apply -f helm-chart/namespace/templates/namespace.yaml
+        kubectl apply -f helm-chart/ingress-controller/templates/namespace.yaml
         
         until kubectl get namespace ingress-nginx > /dev/null 2>&1; do
           echo "Waiting for namespace ingress-nginx to be available..."
@@ -29,5 +29,5 @@ jobs:
         kubectl annotate namespace ingress-nginx meta.helm.sh/release-name=ingress-nginx --overwrite
         kubectl annotate namespace ingress-nginx meta.helm.sh/release-namespace=ingress-nginx --overwrite
 
-        helm upgrade --install ingress-nginx helm-chart/namespace \
+        helm upgrade --install ingress-nginx helm-chart/ingress-controller \
         --namespace ingress-nginx
