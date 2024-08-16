@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: backend-gateway
-  namespace: default # ingress-nginx
+  namespace: ingress-nginx
 spec:
   rules:
   - host: "devtmp.duckdns.org"

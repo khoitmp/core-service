@@ -88,4 +88,5 @@ jobs:
       - name: Deploy with Helm
         run: |
           helm upgrade --install core-service ./helm-chart/core-service \
-            --set deployment.image.tag=${{ needs.build.outputs.image-tag }}
+            --set deployment.image.tag=${{ needs.build.outputs.image-tag }} \
+            --namespace ingress-nginx
