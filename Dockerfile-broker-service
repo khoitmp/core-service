@@ -22,7 +22,7 @@ WORKDIR /app
 
 COPY --from=build /app/out /app/
 
-ENTRYPOINT ["dotnet", "Device.Api.dll"]
+ENTRYPOINT ["dotnet", "Broker.Api.dll"]
 
 # Debug
 # CMD ["tail", "-f", "/dev/null"]
