@@ -19,7 +19,6 @@ jobs:
     - name: Create namespace
       run: |
         kubectl apply -f helm-chart/ingress-controller/templates/namespace.yaml
-        kubectl wait --for=condition=Established namespace/ingress-nginx
 
     - name: Deploy with Helm
       run: |
