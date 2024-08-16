@@ -656,11 +656,9 @@ webhooks:
     - networking.k8s.io
     apiVersions:
     - v1
-  - operations:
+    operations:
     - CREATE
     - UPDATE
-    - DELETE
-    - CONNECT
     resources:
     - ingresses
   sideEffects: None
