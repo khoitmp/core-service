@@ -25,5 +25,9 @@ jobs:
           sleep 10
         done
 
+        kubectl label namespace ingress-nginx app.kubernetes.io/managed-by=Helm --overwrite
+        kubectl annotate namespace ingress-nginx meta.helm.sh/release-name=ingress-nginx --overwrite
+        kubectl annotate namespace ingress-nginx meta.helm.sh/release-namespace=ingress-nginx --overwrite
+
         helm upgrade --install ingress-nginx helm-chart/ingress-controller \
         --namespace ingress-nginx
