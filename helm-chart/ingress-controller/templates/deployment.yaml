@@ -659,7 +659,6 @@ webhooks:
   - operations:
     - CREATE
     - UPDATE
-    - PATCH
     - DELETE
     - CONNECT
     resources:
