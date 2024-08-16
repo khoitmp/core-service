@@ -6,7 +6,7 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: "139.59.219.225"
+  - host: "dev.khoitmp.duckdns.org"
     http:
       paths:
       - path: /dev
